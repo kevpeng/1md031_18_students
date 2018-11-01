@@ -17,16 +17,88 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Page title shown in window title</title>
+        <title>Order Your Spaghetti Burger!</title>
         <meta charset="utf-8"/>
     </head>
     <body>
         <main>
-            <h1>Welcome to Burger</h1>
+            <h1>Welcome to Spaghetti</h1>
             <h2>Select Burger</h2>
-            <p>This is where you select the burger</p>
-            <h2>The Water Burger</h2>
-            <img=
+            <p>This is where you execute burger selection</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Water Burger</th>
+                        <th>Fire Burger</th>
+                        <th>Air Burger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src=https://vignette.wikia.nocookie.net/spongebob/images/d/d4/Krabby_Patty_transparentpng.png/revision/latest?cb=20170310181007 alt ="Picture of Water Burger" title="Water Burger" width="200">
+                        </td>
+                        <td><img src=https://moadrupalweb.blob.core.windows.net/moadrupalweb/original/5571_BurgerKing_HeroImage.jpg alt="Picture of Fire Burger" title="Fire Burger" width="200">
+                        </td>
+                        <td><img src=https://i.stack.imgur.com/Ny7Js.png alt="Picture of Air Burger" title="Air Burger" width="200">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <li>Highest Quality Animated Meat</li>
+                            <li>Ingredients drawn from local companies</li>
+                            <li>Contains lactose, gluten</li>
+                        </td>
+                        <td>
+                            <li>Highest Quality Angus Beef</li>
+                            <li>Only real burger</li>
+                            <li>Contains lactose, gluten</li>
+                        </td>
+                        <td>
+                            <li>Highest Quality Air Meat</li>
+                            <li>Gluten-free</li>
+                            <li>Lactose-free</li>
+                        </td>
+                    </tr>
+            </table>
+            <h2>Customer Information</h2>
+            <p>This is where customer information is input</p>
+            <h3>Delivery Information:</h3>
+            <p>
+                <label for="fullname">Full name</label><br>
+                <input type="text" id="fullname" name="Fullname" required="required" placeholder="First and last name">
+            </p>
+            <p>
+                <label for="email">E-mail</label><br>
+                <input type="text" id="Email" name="Email" required="required" placeholder="E-mail address">
+            </p>
+            <p>
+                <label for="Street_name">Street name</label><br>
+                <input type="text" id="Street_name" name="Street_name" required="required" placeholder="Street name">
+            </p>
+            <p>
+                <label for="House_number">House number</label><br>
+                <input type="number" id="House_number" name="House_number" required="required" placeholder="House number">
+            </p>
+            
+            <p>
+                <label for="payment">Payment Method</label><br>
+                <select id="Payment" name="pay">
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>Cash</option>
+                    <option>Gold</option>
+                </select>
+            </p>
+            <label for="gender">Gender</label><br>
+            <form action="">
+                <input type="radio" name="gender" value="male">Male<br>
+                <input type="radio" name="gender" value="female">Female<br>
+                <input type="radio" name="gender" value="other">Other<br>
+                <input type="radio" name="gender" value="undisclosed">Do not wish to disclose<br>
+            </form>     
+            
+            <button type="submit"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0MpnXflCwKYOOG5DKEVeVZmgABKbdXOe5nc1O8HKytAxOn8k-" width="10">Check out</button>
+            
         </main>
     </body>
 </html>

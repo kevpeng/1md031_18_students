@@ -4,24 +4,24 @@ Before you submit the final version of your labs, make sure that your project fu
 
 ## 00 Introduction
 
-- [ ] Install an IDE on your system
+- [X] Install an IDE on your system
 
 ## 01 Git
 
-- [ ] Fork and clone the 1md032_18_students repository
+- [X] Fork and clone the 1md032_18_students repository
 
 
 ## 02 HTML
 
 Create an index.html file which contains:
-- [ ] A headline
-- [ ] A section to select burgers that contains at least three items. Each item has:
-	- [ ] A name
-	- [ ] An image
-	- [ ] Information about allergies 
+- [X?] A headline
+- [1, 2, 3] A section to select burgers that contains at least three items. Each item has:
+	- [1,2,3] A name
+	- [1,2,3] An image
+	- [1,2,3] Information about allergies 
 - [ ] A section to collect customer information:
-	- [ ] First- and Last Name (in one field)
-	- [ ] E-Mail Address
+	- [X] First- and Last Name (in one field)
+	- [X] E-Mail Address
 	- [ ] Street
 	- [ ] House Number (only allowing numbers in this field)
 	- [ ] Gender (male, female, do not wish to provide as radio buttons)
