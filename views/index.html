@@ -96,9 +96,13 @@
                 <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
                 <div class="view-box">
                     <div id=dots v-on:click="displayOrder">
-                        <div v-bind:style="{left: x + 'px', top: y + 'px'}">
+                        <div v-bind:style="{ left: x + 'px', top: y + 'px'}">
                             T
                         </div>
+
+                        <!--<div v-bind:style="{left: x + 'px', top: y + 'px'}">-->
+                            <!--T-->
+                        <!--</div>-->
                     </div>
                 </div>
                     <strong><label for="gender">Gender</label></strong>
@@ -111,7 +115,7 @@
             </section>
         </div>
 
-        <button v-on:click="submit('unseen')" class="button(data)">Check out</button>
+        <button v-on:click="addOrder('unseen')" class="button(data)">Check out</button>
 
         <div id="unseen" class="unseen">
             <h3>Order received!</h3>
@@ -124,13 +128,13 @@
                     Email: {{customer_details[1]}}
                 </ul>
                 <ul>
-                    Deliver to: {{customer_details[2]}}
+                    Deliver to: {{delivery_details}}
                 </ul>
                 <ul>
-                    Payment: {{customer_details[3]}}
+                    Payment: {{customer_details[2]}}
                 </ul>
                 <ul>
-                    Gender: {{customer_details[4]}}
+                    Gender: {{customer_details[3]}}
                 </ul>
 
             </h5>
