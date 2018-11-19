@@ -1,6 +1,8 @@
 'use strict';
 var socket = io();
 
+var orderID = 0;
+var burgers_selected = [];
 var vm = new Vue({
     el: '#myID',
     data: {
@@ -10,7 +12,7 @@ var vm = new Vue({
         orders:
             [],
             x: 0,
-            y: 0
+            y: 0,
     },
     created: function () {
         socket.on('initialize', function (data) {
@@ -36,8 +38,8 @@ var vm = new Vue({
             var payment_mthd = document.getElementById("Payment").value;
             var gender = document.querySelector('input[name="gender"]:checked').value;
             this.delivery_details = [this.x, this.y];
-            console.log(this.delivery_details);
-            var burgers_selected = [];
+
+            burgers_selected = [];
             for(var burger in this.burgers) {
                 if(document.getElementById(this.burgers[burger].name).checked) {
                     burgers_selected.push(this.burgers[burger].name);
@@ -57,8 +59,9 @@ var vm = new Vue({
             var e = document.getElementById(id);
             e.style.display='block';
 
-
-            socket.emit("addOrder", { orderId: this.getNext(),
+            console.log(orderID);
+            orderID = orderID+1;
+            socket.emit("addOrder", { orderId: orderID,
                 details: { x: this.x,
                     y: this.y },
                 orderItems: this.orders,
@@ -72,6 +75,9 @@ var vm = new Vue({
             };
             this.x = event.clientX - 10 - offset.x;
             this.y = event.clientY - 10 - offset.y;
+        },
+        get_order: function() {
+            return burgers_selected;
         }
     }
 

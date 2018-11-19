@@ -140,8 +140,8 @@
             </h5>
             <h4>Order Details</h4>
             <h5>
-                <ul v-for="(x,index) in orders">
-                    {{orders[index]}}
+                <ul>
+                    {{ get_order().join(', ') }}
                 </ul>
             </h5>
 
