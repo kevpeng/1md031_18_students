@@ -5,12 +5,12 @@
         <title>Order Your Spaghetti Burger!</title>
 
         <!--Loading in resources (css + js)-->
-        <link rel="stylesheet" href="css/deli-very.css">
+        <!--<link rel="stylesheet" href="css/deli-very.css">-->
         <script type="text/javascript" src="js/food.js"></script>
     	<script src="/vue/vue.js" defer></script>
 	    <script src="/socket.io/socket.io.js" defer></script>
-	    <script src="js/deli-very.js" defer></script>
-        <script src="js/js_script.js" defer></script>
+	    <!--<script src="js/deli-very.js" defer></script>-->
+        <!--<script src="js/js_script.js" defer></script>-->
         <script src="https://vuejs.org/js/vue.js" defer></script>
         <script src="js/vue_script.js" defer></script>
         <meta charset="utf-8"/>
@@ -93,12 +93,11 @@
                     </select>
                 </p>
                 Please indicate point of delivery:
+                <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
                 <div class="view-box">
-                    <div id="dots" v-on:click="addOrder">
-                        <div
-                                v-for="(order, key) in orders"
-                                v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                            {{key}}
+                    <div id=dots v-on:click="displayOrder">
+                        <div v-bind:style="{left: x + 'px', top: y + 'px'}">
+                            T
                         </div>
                     </div>
                 </div>
@@ -116,26 +115,35 @@
 
         <div id="unseen" class="unseen">
             <h3>Order received!</h3>
-            <h4>
+            <h4>Customer Details</h4>
+            <h5>
                 <ul>
-                    Name: {{order[0]}}
+                    Name: {{customer_details[0]}}
                 </ul>
                 <ul>
-                    Email: {{order[1]}}
+                    Email: {{customer_details[1]}}
                 </ul>
                 <ul>
-                    Deliver to: {{order[2]}}
+                    Deliver to: {{customer_details[2]}}
                 </ul>
                 <ul>
-                    Payment: {{order[2]}}
+                    Payment: {{customer_details[3]}}
                 </ul>
                 <ul>
-                    Gender: {{order[3]}}
+                    Gender: {{customer_details[4]}}
                 </ul>
-            </h4>
+
+            </h5>
+            <h4>Order Details</h4>
+            <h5>
+                <ul v-for="(x,index) in orders">
+                    {{orders[index]}}
+                </ul>
+            </h5>
+
         </div>
 
-        <footer class="wrapper2" style="padding-top: 0px;">
+        <footer style="padding-top: 0px;">
             <p>&copy Kevin Peng </p>
         </footer>
 
