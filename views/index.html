@@ -1,105 +1,148 @@
-<!--
+<!-- HTML file for burger website -->
 <!DOCTYPE html>
-<html>
-<head>
-	<title>DELI-VERY</title>
-</head>
-<body>
-	<h1>
-		Hello world!
-	</h1>
-	<a href="/map">View map</a>
-</body>
-</html>
-*/
--->
-
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
     <head>
         <title>Order Your Spaghetti Burger!</title>
+
+        <!--Loading in resources (css + js)-->
+        <link rel="stylesheet" href="css/deli-very.css">
+        <script type="text/javascript" src="js/food.js"></script>
+    	<script src="/vue/vue.js" defer></script>
+	    <script src="/socket.io/socket.io.js" defer></script>
+	    <script src="js/deli-very.js" defer></script>
+        <script src="js/js_script.js" defer></script>
+        <script src="https://vuejs.org/js/vue.js" defer></script>
+        <script src="js/vue_script.js" defer></script>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <!--
+        not sure why this is here.. might need later
+        <div id="vue-container"> -->
         <main>
-            <h1>Welcome to Spaghetti</h1>
-            <h2>Select Burger</h2>
-            <p>This is where you execute burger selection</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Water Burger</th>
-                        <th>Fire Burger</th>
-                        <th>Air Burger</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src=https://vignette.wikia.nocookie.net/spongebob/images/d/d4/Krabby_Patty_transparentpng.png/revision/latest?cb=20170310181007 alt ="Picture of Water Burger" title="Water Burger" width="200">
-                        </td>
-                        <td><img src=https://moadrupalweb.blob.core.windows.net/moadrupalweb/original/5571_BurgerKing_HeroImage.jpg alt="Picture of Fire Burger" title="Fire Burger" width="200">
-                        </td>
-                        <td><img src=https://i.stack.imgur.com/Ny7Js.png alt="Picture of Air Burger" title="Air Burger" width="200">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <li>Highest Quality Animated Meat</li>
-                            <li>Ingredients drawn from local companies</li>
-                            <li>Contains lactose, gluten</li>
-                        </td>
-                        <td>
-                            <li>Highest Quality Angus Beef</li>
-                            <li>Only real burger</li>
-                            <li>Contains lactose, gluten</li>
-                        </td>
-                        <td>
-                            <li>Highest Quality Air Meat</li>
-                            <li>Gluten-free</li>
-                            <li>Lactose-free</li>
-                        </td>
-                    </tr>
-            </table>
-            <h2>Customer Information</h2>
-            <p>This is where customer information is input</p>
-            <h3>Delivery Information:</h3>
-            <p>
-                <label for="fullname">Full name</label><br>
-                <input type="text" id="fullname" name="Fullname" required="required" placeholder="First and last name">
-            </p>
-            <p>
-                <label for="email">E-mail</label><br>
-                <input type="text" id="Email" name="Email" required="required" placeholder="E-mail address">
-            </p>
-            <p>
-                <label for="Street_name">Street name</label><br>
-                <input type="text" id="Street_name" name="Street_name" required="required" placeholder="Street name">
-            </p>
-            <p>
-                <label for="House_number">House number</label><br>
-                <input type="number" id="House_number" name="House_number" required="required" placeholder="House number">
-            </p>
-            
-            <p>
-                <label for="payment">Payment Method</label><br>
-                <select id="Payment" name="pay">
-                    <option>Credit Card</option>
-                    <option>Debit Card</option>
-                    <option>Cash</option>
-                    <option>Gold</option>
-                </select>
-            </p>
-            <label for="gender">Gender</label><br>
-            <form action="">
-                <input type="radio" name="gender" value="male">Male<br>
-                <input type="radio" name="gender" value="female">Female<br>
-                <input type="radio" name="gender" value="other">Other<br>
-                <input type="radio" name="gender" value="undisclosed">Do not wish to disclose<br>
-            </form>     
-            
-            <button type="submit"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0MpnXflCwKYOOG5DKEVeVZmgABKbdXOe5nc1O8HKytAxOn8k-" width="10">Check out</button>
-            
+        <header class="title">
+            <img src=http://photoexpress.ie/images/Small-bar.jpg alt="bar_photo" style="opacity:0.7;">
+            <div class="centered">
+                <h1>Welcome to Spaghetti</h1>
+            </div>
+        </header>
+        <div id="myID">
+        <section>
+                <div class="wrapper">
+                    <div v-for="burger in burgers">
+                        <h1 style="text-align: center; color: #fff;">{{burger.name}}</h1>
+                        <p class="burger_product">
+                            <img :src=burger.imageLink width="125px" height="100px" class="burger_img">
+                        </p>
+                        <div class="text">
+                            <li>
+                                {{ burger.kCal + ' kCal'}}
+                            </li>
+                            <li v-if="burger.gluten===true">
+                                Contains gluten
+                            </li>
+                            <div v-else>
+                                <br>
+                            </div>
+                            <li v-if="burger.lactose===true">
+                                Contains lactose
+                            </li>
+                            <div v-else>
+                                <br>
+                            </div>
+
+                            <input type="checkbox" :id=burger.name name="burger">
+
+                            Add to order
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <div class="order_section">
+            <section class="order_info">
+                <h2>Customer Information</h2>
+                    <p>This is where customer information is input</p>
+                <h3>Delivery Information:</h3>
+                <p>
+                    <strong><label for="fullname">Full name</label><br></strong>
+                    <input type="text" id="fullname" name="Fullname" required="required" placeholder="First and last name">
+                </p>
+                <p>
+                    <strong><label for="email">E-mail</label><br></strong>
+                    <input type="text" id="Email" name="Email" required="required" placeholder="E-mail address">
+                </p>
+                <!--<p>-->
+                    <!--<strong><label for="Street_name">Street name</label><br></strong>-->
+                    <!--<input type="text" id="Street_name" name="Street_name" required="required" placeholder="Street name">-->
+                <!--</p>-->
+                <!--<p>-->
+                    <!--<strong><label for="House_number">House number</label><br></strong>-->
+                    <!--<input type="number" id="House_number" name="House_number" required="required" placeholder="House number">-->
+                <!--</p>-->
+                <p>
+                    <strong><label for="payment">Payment Method</label><br></strong>
+                    <select id="Payment" name="pay">
+                        <option>Gold</option>
+                        <option>Credit Card</option>
+                        <option>Debit Card</option>
+                        <option>Cash</option>
+                    </select>
+                </p>
+                Please indicate point of delivery:
+                <div class="view-box">
+                    <div id="dots" v-on:click="addOrder">
+                        <div
+                                v-for="(order, key) in orders"
+                                v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                            {{key}}
+                        </div>
+                    </div>
+                </div>
+                    <strong><label for="gender">Gender</label></strong>
+                    <form action="">
+                        <input type="radio" name="gender" value="Male">Male<br>
+                        <input type="radio" name="gender" value="Female">Female<br>
+                        <input type="radio" name="gender" value="Other">Other<br>
+                        <input type="radio" name="gender" value="Undisclosed">Do not wish to disclose<br>
+                    </form>
+            </section>
+        </div>
+
+        <button v-on:click="submit('unseen')" class="button(data)">Check out</button>
+
+        <div id="unseen" class="unseen">
+            <h3>Order received!</h3>
+            <h4>
+                <ul>
+                    Name: {{order[0]}}
+                </ul>
+                <ul>
+                    Email: {{order[1]}}
+                </ul>
+                <ul>
+                    Deliver to: {{order[2]}}
+                </ul>
+                <ul>
+                    Payment: {{order[2]}}
+                </ul>
+                <ul>
+                    Gender: {{order[3]}}
+                </ul>
+            </h4>
+        </div>
+
+        <footer class="wrapper2" style="padding-top: 0px;">
+            <p>&copy Kevin Peng </p>
+        </footer>
+
+        </div>
+
         </main>
+
     </body>
 </html>
 
